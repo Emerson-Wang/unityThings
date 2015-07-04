@@ -9,7 +9,8 @@ public class CannonFire : MonoBehaviour
 	public Transform shotorigin;
 	public int shotspeed;
 	private Touch touch;
-	
+	public GameObject cannon;
+
 	//Checking for input to fire cannonball
 	void Update()
 	{
@@ -35,17 +36,16 @@ public class CannonFire : MonoBehaviour
 		Ray mouseClick = Camera.main.ScreenPointToRay(shot);
 		//Final vector for firing cannonball
 		Vector3 shotdirection;
-
-		//Creating cannonball in front of cannon barrel
-		reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
-
 		//If the click actually lands on the field it will fire the cannonball
 		if (Physics.Raycast(mouseClick, out shothit))
 		{
+			//Creating cannonball in front of cannon barrel
+			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
 			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
 			shotdirection = shothit.point - reload.transform.position;
 			//Applying force to cannonball along the vector
 			reload.AddForce(shotdirection * shotspeed);
+			//Applying avatar animation for cannon
 		}
 	}
 
@@ -60,17 +60,19 @@ public class CannonFire : MonoBehaviour
 		Ray mouseClick = Camera.main.ScreenPointToRay(shot);
 		//Final vector for firing cannonball
 		Vector3 shotdirection;
-		
-		//Creating cannonball in front of cannon barrel
-		reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
-		
+
 		//If the click actually lands on the field it will fire the cannonball
-		if (Physics.Raycast(mouseClick, out shothit))
+		if (Physics.Raycast(mouseClick, out shothit)) 
 		{
+			//Creating cannonball in front of cannon barrel
+			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
 			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
 			shotdirection = shothit.point - reload.transform.position;
 			//Applying force to cannonball along the vector
 			reload.AddForce(shotdirection * shotspeed);
+			//Applying avatar animation for cannon
+
+
 		}
 	}
 }
