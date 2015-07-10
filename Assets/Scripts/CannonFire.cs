@@ -43,6 +43,7 @@ public class CannonFire : MonoBehaviour
 			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
 			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
 			shotdirection = shothit.point - reload.transform.position;
+			shotdirection.Normalize ();
 			//Applying force to cannonball along the vector
 			reload.AddForce(shotdirection * shotspeed);
 			//Applying avatar animation for cannon
@@ -68,6 +69,7 @@ public class CannonFire : MonoBehaviour
 			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
 			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
 			shotdirection = shothit.point - reload.transform.position;
+			shotdirection.Normalize ();
 			//Applying force to cannonball along the vector
 			reload.AddForce(shotdirection * shotspeed);
 			//Applying avatar animation for cannon
