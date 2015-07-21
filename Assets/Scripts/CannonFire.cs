@@ -39,14 +39,16 @@ public class CannonFire : MonoBehaviour
 		//If the click actually lands on the field it will fire the cannonball
 		if (Physics.Raycast(mouseClick, out shothit))
 		{
-			//Creating cannonball in front of cannon barrel
-			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
-			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
-			shotdirection = shothit.point - reload.transform.position;
-			shotdirection.Normalize ();
-			//Applying force to cannonball along the vector
-			reload.AddForce(shotdirection * shotspeed);
-			//Applying avatar animation for cannon
+			if (shothit.collider.CompareTag ("Surface"))
+			{
+				//Creating cannonball in front of cannon barrel
+				reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
+				//Calculating final shot vector by taking position of mouse and subtracting position of cannon
+				shotdirection = shothit.point - reload.transform.position;
+				shotdirection.Normalize ();
+				//Applying force to cannonball along the vector
+				reload.AddForce(shotdirection * shotspeed);
+			}
 		}
 	}
 
@@ -65,15 +67,16 @@ public class CannonFire : MonoBehaviour
 		//If the click actually lands on the field it will fire the cannonball
 		if (Physics.Raycast(mouseClick, out shothit)) 
 		{
-			//Creating cannonball in front of cannon barrel
-			reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
-			//Calculating final shot vector by taking position of mouse and subtracting position of cannon
-			shotdirection = shothit.point - reload.transform.position;
-			shotdirection.Normalize ();
-			//Applying force to cannonball along the vector
-			reload.AddForce(shotdirection * shotspeed);
-			//Applying avatar animation for cannon
-
+			if (shothit.collider.CompareTag ("Surface"))
+			{
+				//Creating cannonball in front of cannon barrel
+				reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
+				//Calculating final shot vector by taking position of mouse and subtracting position of cannon
+				shotdirection = shothit.point - reload.transform.position;
+				shotdirection.Normalize ();
+				//Applying force to cannonball along the vector
+				reload.AddForce(shotdirection * shotspeed);
+			}
 
 		}
 	}
