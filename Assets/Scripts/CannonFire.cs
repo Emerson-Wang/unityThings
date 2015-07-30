@@ -10,10 +10,13 @@ public class CannonFire : MonoBehaviour
 	public int shotspeed;
 	private Touch touch;
 	public GameObject cannon;
+	private float time;
+	public float AttackSpeed;
 	// private Animation anim;
 
 	void Start()
 	{
+		time = 0.0f;
 		// anim = GetComponent<Animation>();
 	}
 
@@ -23,11 +26,19 @@ public class CannonFire : MonoBehaviour
 		// When left mouse button is pressed, executes "Shoot" function
 		if(Input.GetButtonDown ("Fire1"))
 		{
-			MouseShoot();
+			if(time == 0 || Time.time >= time + AttackSpeed)
+			{
+				time = Time.time;
+				MouseShoot();
+			}
 		}
 		else if(Input.touchCount > 0)
 		{
-			TouchShoot();
+			if(time == 0 || Time.time >= time + AttackSpeed)
+			{
+				time = Time.time;
+				TouchShoot();
+			}
 		}
 
 	}
