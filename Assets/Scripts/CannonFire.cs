@@ -10,6 +10,12 @@ public class CannonFire : MonoBehaviour
 	public int shotspeed;
 	private Touch touch;
 	public GameObject cannon;
+	// private Animation anim;
+
+	void Start()
+	{
+		// anim = GetComponent<Animation>();
+	}
 
 	//Checking for input to fire cannonball
 	void Update()
@@ -39,7 +45,7 @@ public class CannonFire : MonoBehaviour
 		//If the click actually lands on the field it will fire the cannonball
 		if (Physics.Raycast(mouseClick, out shothit))
 		{
-			if (shothit.collider.CompareTag ("Surface"))
+			if (shothit.collider.CompareTag ("Surface") || shothit.collider.CompareTag ("Enemy"))
 			{
 				//Creating cannonball in front of cannon barrel
 				reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
@@ -48,6 +54,8 @@ public class CannonFire : MonoBehaviour
 				shotdirection.Normalize ();
 				//Applying force to cannonball along the vector
 				reload.AddForce(shotdirection * shotspeed);
+				//Play cannon animation
+
 			}
 		}
 	}
@@ -67,7 +75,7 @@ public class CannonFire : MonoBehaviour
 		//If the click actually lands on the field it will fire the cannonball
 		if (Physics.Raycast(mouseClick, out shothit)) 
 		{
-			if (shothit.collider.CompareTag ("Surface"))
+			if (shothit.collider.CompareTag ("Surface") || shothit.collider.CompareTag ("Surface"))
 			{
 				//Creating cannonball in front of cannon barrel
 				reload = Instantiate(cannonball, shotorigin.position, shotorigin.rotation) as Rigidbody;
