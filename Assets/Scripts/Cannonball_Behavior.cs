@@ -10,6 +10,9 @@ public class Cannonball_Behavior : MonoBehaviour {
 	//  Behavior of cannonball when colliding with ground or enemy
 	void OnCollisionEnter(Collision impact)
 	{
+		Collider ball = gameObject.GetComponent<Collider>();
+
+		ball.enabled = false;
 
 		Vector3 ballInfo = gameObject.transform.position;
 		
@@ -33,5 +36,10 @@ public class Cannonball_Behavior : MonoBehaviour {
 			}
 
 		}
+	}
+
+	void OnCollisionExit(Collision impact)
+	{
+		Destroy(gameObject);
 	}
 }
