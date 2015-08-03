@@ -12,10 +12,11 @@ public class CannonFire : MonoBehaviour
 	public GameObject cannon;
 	private float time;
 	public float AttackSpeed;
-	// private Animation anim;
+	int layerMask = 1 << 9;
 
 	void Start()
 	{
+		layerMask = ~layerMask;
 		time = 0.0f;
 		// anim = GetComponent<Animation>();
 	}
@@ -54,7 +55,7 @@ public class CannonFire : MonoBehaviour
 		//Final vector for firing cannonball
 		Vector3 shotdirection;
 		//If the click actually lands on the field it will fire the cannonball
-		if (Physics.Raycast(mouseClick, out shothit))
+		if (Physics.Raycast(mouseClick, out shothit, Mathf.Infinity, layerMask))
 		{
 			if (shothit.collider.CompareTag ("Surface") || shothit.collider.CompareTag ("Enemy"))
 			{
@@ -66,7 +67,7 @@ public class CannonFire : MonoBehaviour
 				//Applying force to cannonball along the vector
 				reload.AddForce(shotdirection * shotspeed);
 				//Play cannon animation
-
+				GetComponent<Animation>().Play("Cannon_Fire");
 			}
 		}
 	}
@@ -84,7 +85,7 @@ public class CannonFire : MonoBehaviour
 		Vector3 shotdirection;
 
 		//If the click actually lands on the field it will fire the cannonball
-		if (Physics.Raycast(mouseClick, out shothit)) 
+		if (Physics.Raycast(mouseClick, out shothit, Mathf.Infinity, layerMask)) 
 		{
 			if (shothit.collider.CompareTag ("Surface") || shothit.collider.CompareTag ("Surface"))
 			{
@@ -95,6 +96,8 @@ public class CannonFire : MonoBehaviour
 				shotdirection.Normalize ();
 				//Applying force to cannonball along the vector
 				reload.AddForce(shotdirection * shotspeed);
+				//Play cannon animation
+				GetComponent<Animation>().Play("Cannon_Fire");
 			}
 
 		}
