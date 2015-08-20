@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 44775d547fa8e59479fb87a4a621dbb9
-timeCreated: 1438190778
+timeCreated: 1438982099
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -63,6 +63,8 @@ ModelImporter:
     7400000: Default Take
     7400002: Run
     7400004: Walk
+    7400006: Attack
+    7400008: Death_1
     9500000: //RootNode
     13700000: dwarf
   materials:

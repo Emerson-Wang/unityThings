@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fd4685726b972a349a001b4f02f41dbe
-timeCreated: 1438190784
+timeCreated: 1438982138
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -28,6 +28,7 @@ ModelImporter:
     100040: UpLeg_L_001_Bot
     100042: Wrist_L
     100044: Wrist_L_001_Top
+    100046: Cylinder
     400000: Ankle_L
     400002: Ankle_L_001_Bot
     400004: Armature
@@ -51,12 +52,17 @@ ModelImporter:
     400040: UpLeg_L_001_Bot
     400042: Wrist_L
     400044: Wrist_L_001_Top
+    400046: Cylinder
     4300000: Elf
+    4300002: Cylinder
     7400000: Default Take
     7400002: Run
     7400004: Walk
+    7400006: Attack
+    7400008: Death_1
     9500000: //RootNode
     13700000: Elf
+    13700002: Cylinder
   materials:
     importMaterials: 1
     materialName: 0
